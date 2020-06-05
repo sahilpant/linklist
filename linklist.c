@@ -50,7 +50,7 @@ void displayReverse(){
 
 void main()
 {
-    char ch;int choice,data,position;
+    char ch;int choice,data,position; 
     printf("Do You want to create a Link List?(Y/N)::");
     scanf("%c",&ch);
     (ch=='y'||ch=='Y') ? createList() : exit(0);
