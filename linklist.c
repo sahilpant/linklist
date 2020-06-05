@@ -8,11 +8,11 @@ struct listNode
 
 
 void createList(){
-    struct listNode *new;
-    new = (struct listNode*)malloc(sizeof(struct listNode));
+    struct listNode *newNode;
+    newNode = (struct listNode*)malloc(sizeof(struct listNode));
     printf("Enter the data");
-    scanf("%d",new->data);
-    new->next = NULL;
+    scanf("%d",newNode->data);
+    newNode->next = NULL;
 
 }
 
@@ -122,7 +122,7 @@ void main()
             break;
         }
         printf("\nDo You want to contiue?(y/n)");
-        scanf("%c",&choice);
+        scanf("%c",&ch);
         if(ch=='y'||ch=='Y')
         {
             continue;
