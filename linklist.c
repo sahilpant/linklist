@@ -10,7 +10,12 @@ struct listNode
 void createList(){
     struct listNode *newNode;
     newNode = (struct listNode*)malloc(sizeof(struct listNode));
-    printf("Enter the data");
+    if(!newNode)
+    {
+        printf("Memory Full!!");
+        return;
+    }
+    printf("Enter the data::");
     scanf("%d",newNode->data);
     head = newNode;
     newNode->next = NULL;
@@ -18,7 +23,18 @@ void createList(){
 }
 
 void insertEnd(int data){
-
+    struct listNode *newNode,*p;
+    newNode = (struct listNode*)malloc(sizeof(struct listNode));
+    if(!newNode)
+    {
+        printf("Memory Full!!");
+        return;
+    }
+    newNode->data = data;
+    p = newNode;
+    newNode->next = *head;
+    head = p;
+    free(p);
 }
 
 void insertRandom(int data, int position){
