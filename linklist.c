@@ -15,7 +15,7 @@ void insertEnd(int data){
 
 }
 
-void insertRandom(){
+void insertRandom(int data, int position){
 
 }
 
@@ -27,7 +27,7 @@ void deleteEnd(){
 
 }
 
-void deleteRandom(){
+void deleteRandom(int position){
 
 }
 
@@ -50,43 +50,81 @@ void displayReverse(){
 
 void main()
 {
-    char ch;int choice,data;
+    char ch;int choice,data,position;
     printf("Do You want to create a Link List?(Y/N)::");
     scanf("%c",&ch);
     (ch=='y'||ch=='Y') ? createList() : exit(0);
     while(1)
     {
-        printf("choose from the following options::");
-        printf("1.Insert at the end::");
-        printf("2.Insert at the Beginning::");
-        printf("3.Insert at a random position::");
-        printf("4.delete at the end::");
-        printf("5.delete at the beginning::");
-        printf("5.delete at any random position::");
-        printf("6.Display the list::");
-        printf("7.Display the list in reverse order::");
+        printf("\nchoose from the following options::");
+        printf("\n1.Insert at the end::");
+        printf("\n2.Insert at the Beginning::");
+        printf("\n3.Insert at a random position::");
+        printf("\n4.delete at the end::");
+        printf("\n5.delete at the beginning::");
+        printf("\n6.delete at any random position::");
+        printf("\n7.Display the list::");
+        printf("\n8.Display the list in reverse order::");
         scanf("%d",&choice);
         switch(choice)
         {
             case 1:
-            printf("Enter the Data::");
+            printf("\nEnter the Data::");
             scanf("%d",&data);
             insertEnd(data);
+            break;
             
             case 2:
-            printf("Enter the Data::");
+            printf("\nEnter the Data::");
             scanf("%d",&data);
             insertBeg(data);
+            break;
 
             case 3:
+            
+            printf("\nEnter the Data and position::");
+            scanf("%d%d",&data,&position);
+            insertRandom(data,position);
+            break;
 
             case 4:
-
+            
+            printf("\nData has been deleted==>");
+            deleteEnd();
+            break;
+            
             case 5:
+
+            printf("\nData has been deleted==>");
+            deleteBeg();
+            break;
 
             case 6:
 
+            printf("\nEnter the position::");
+            scanf("%d",&position);
+            deleteRandom(position);
+            printf("\nData has been deleted==>");
+            break;
+
             case 7:
+            displayList();
+            break;
+
+            case 8:
+
+            displayReverse();
+            break;
+        }
+        printf("\nDo You want to contiue?(y/n)");
+        scanf("%c",&choice);
+        if(ch=='y'||ch=='Y')
+        {
+            continue;
+        }
+        else
+        {
+            exit(0);
         }
     }
 }
