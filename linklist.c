@@ -23,21 +23,10 @@ void createList(){
 }
 
 void insertEnd(int data){
-    struct listNode *newNode,*p;
-    newNode = (struct listNode*)malloc(sizeof(struct listNode));
-    if(!newNode)
-    {
-        printf("Memory Full!!");
-        return;
-    }
-    newNode->data = data;
-    p = newNode;
-    newNode->next = *head;
-    head = p;
-    free(p);
 }
 
 void insertRandom(int data, int position){
+    int k = 1;
 
 }
 
@@ -55,10 +44,18 @@ void deleteRandom(int position){
 
 void insertBeg(int data)
 {
-    struct listNode *p,*newNode;
+   struct listNode *newNode,*p;
     newNode = (struct listNode*)malloc(sizeof(struct listNode));
-    p = *head;
-     
+    if(!newNode)
+    {
+        printf("Memory Full!!");
+        return;
+    }
+    newNode->data = data;
+    p = newNode;
+    newNode->next = *head;
+    head = p;
+    free(p);
 }
 
 void displayList(){
