@@ -8,6 +8,11 @@ struct listNode
 
 
 void createList(){
+    struct listNode *new;
+    new = (struct listNode*)malloc(sizeof(struct listNode));
+    printf("Enter the data");
+    scanf("%d",new->data);
+    new->next = NULL;
 
 }
 
