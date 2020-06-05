@@ -12,6 +12,7 @@ void createList(){
     newNode = (struct listNode*)malloc(sizeof(struct listNode));
     printf("Enter the data");
     scanf("%d",newNode->data);
+    head = newNode;
     newNode->next = NULL;
 
 }
