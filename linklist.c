@@ -107,7 +107,7 @@ void insertBeg(int data)
 }
 
 void displayList(node *p){
-    k = 1;
+    int k = 1;
     while(p->next!=NULL){
         printf("Element %d: %d",k,p->data);
         p = p->next;
