@@ -6,10 +6,11 @@ struct listNode
     struct listNode *next;
 }*head=NULL;
 
+typedef struct listNode node;
 
 void createList(){
-    struct listNode *newNode;
-    newNode = (struct listNode*)malloc(sizeof(struct listNode));
+    node *newNode;
+    newNode = (node*)malloc(sizeof(node));
     if(!newNode)
     {
         printf("Memory Full!!");
@@ -22,8 +23,8 @@ void createList(){
 }
 
 void insertEnd(int data){
-    struct listNode *p,*newNode;
-    newNode = (struct listNode*)malloc(sizeof(struct listNode));
+    node *p,*newNode;
+    newNode = (node*)malloc(sizeof(node));
     newNode->data = data;
     p = head;
     while(p!=NULL)
@@ -36,8 +37,8 @@ void insertEnd(int data){
 
 void insertRandom(int data, int position){
     int k = 1;
-    struct listNode *q,*p,*newNode;
-    newNode = (struct linkNode*)malloc(sizeof(struct listNode));
+    node *q,*p,*newNode;
+    newNode = (node*)malloc(sizeof(node));
     if(!newNode)
     {
         printf("Memory Full!!");
@@ -47,29 +48,53 @@ void insertRandom(int data, int position){
     q = head;
     while(q!=NULL && k<position)
     {
+        k++;
         q = q->next;
     }
     newNode->next = q;
     q->next = newNode;
-    free(q);
 }
 
 void deleteBeg(){
-
+    node *temp;
+    temp = head;
+    head = head->next;
+    free(temp);
 }
 
 void deleteEnd(){
-
+    node *temp,*p,*q;
+    p = head;
+    while(p!=NULL)
+    {
+        q = p;
+        p = p->next;
+    }
+    temp = q->next;
+    q->next = NULL;
+    free(temp);
+    
 }
 
 void deleteRandom(int position){
-
+    int k;
+    node *temp,*q,*p;
+    p = head;
+    while(p!=NULL && k<position)
+    {
+        k++;
+        q = p;
+        p = p->next;
+    }
+    temp = q->next;
+    q->next = NULL;
+    free(temp);
 }
 
 void insertBeg(int data)
 {
-   struct listNode *newNode,*p;
-    newNode = (struct listNode*)malloc(sizeof(struct listNode));
+   node *newNode,*p;
+    newNode = (node*)malloc(sizeof(node));
     if(!newNode)
     {
         printf("Memory Full!!");
@@ -79,7 +104,6 @@ void insertBeg(int data)
     p = newNode;
     newNode->next = head;
     head = p;
-    free(p);
 }
 
 void displayList(){
