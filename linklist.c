@@ -22,6 +22,16 @@ void createList(){
 }
 
 void insertEnd(int data){
+    struct listNode *p,*newNode;
+    newNode = (struct listNode*)malloc(sizeof(struct listNode));
+    newNode->data = data;
+    p = head;
+    while(p!=NULL)
+    {
+        p->next;
+    }
+    p->next = newNode;
+    newNode->next = NULL;
 }
 
 void insertRandom(int data, int position){
