@@ -29,7 +29,7 @@ void insertEnd(int data){
     p = head;
     while(p!=NULL)
     {
-        p->next;
+       p = p->next;
     }
     p->next = newNode;
     newNode->next = NULL;
@@ -128,17 +128,13 @@ void insertBeg(int data)
 }
 
 void displayList(){
-
-    if(head == NULL)
-    {
-        printf("LIST EMPTY!!!");
-        return;
-    }
-
-    while(head!=NULL)
-    {
-        printf("%d",head->data);
-        head = head->next;
+    int k=1;
+    node *p;
+    p = head;
+    while(p->next!=NULL){
+        printf("Element %d: %d",k,p->data);
+        p = p->next;
+        k++;
     }
 }
 void Reverse(){
@@ -216,7 +212,7 @@ void main()
             break;
 
             case 7:
-            displayList();
+            displayList(head);
             break;
 
             case 8:
