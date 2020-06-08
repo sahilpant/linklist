@@ -4,7 +4,7 @@ struct listNode
 {
     int data;
     struct listNode *next;
-}**head=NULL;
+}*head=NULL;
 
 
 void createList(){
@@ -19,7 +19,6 @@ void createList(){
     scanf("%d",newNode->data);
     head = newNode;
     newNode->next = NULL;
-
 }
 
 void insertEnd(int data){
@@ -34,13 +33,15 @@ void insertRandom(int data, int position){
         printf("Memory Full!!");
         return;
     }
-    p = newNode;
-    while(p!=NULL && k<position)
+    newNode->data = data;
+    q = head;
+    while(q!=NULL && k<position)
     {
-        q = p;
-        p = p->next;
+        q = q->next;
     }
-    
+    newNode->next = q;
+    q->next = newNode;
+    free(q);
 }
 
 void deleteBeg(){
@@ -66,7 +67,7 @@ void insertBeg(int data)
     }
     newNode->data = data;
     p = newNode;
-    newNode->next = *head;
+    newNode->next = head;
     head = p;
     free(p);
 }
