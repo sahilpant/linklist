@@ -27,7 +27,20 @@ void insertEnd(int data){
 
 void insertRandom(int data, int position){
     int k = 1;
-
+    struct listNode *q,*p,*newNode;
+    newNode = (struct linkNode*)malloc(sizeof(struct listNode));
+    if(!newNode)
+    {
+        printf("Memory Full!!");
+        return;
+    }
+    p = newNode;
+    while(p!=NULL && k<position)
+    {
+        q = p;
+        p = p->next;
+    }
+    
 }
 
 void deleteBeg(){
