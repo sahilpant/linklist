@@ -56,6 +56,13 @@ void insertRandom(int data, int position){
 }
 
 void deleteBeg(){
+    
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
+
     node *temp;
     temp = head;
     head = head->next;
@@ -63,6 +70,13 @@ void deleteBeg(){
 }
 
 void deleteEnd(){
+        
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
+
     node *temp,*p,*q;
     p = head;
     while(p!=NULL)
@@ -77,6 +91,13 @@ void deleteEnd(){
 }
 
 void deleteRandom(int position){
+    
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
+
     int k;
     node *temp,*q,*p;
     p = head;
@@ -108,9 +129,29 @@ void insertBeg(int data)
 
 void displayList(){
 
-}
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
 
-void displayReverse(){
+    while(head!=NULL)
+    {
+        printf("%d",head->data);
+        head = head->next;
+    }
+}
+void Reverse(){
+
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
+
+    node *p,*q;
+    while(p!=NULL) p = p->next;
+    q = head;
 
 }
 
