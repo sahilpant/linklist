@@ -47,7 +47,7 @@ void insertRandom(int data, int position){
     }
     newNode->data = data;
     p = head;
-    if(k==1)
+    if(position==1)
     {
         head = newNode;
         newNode->next = p;
@@ -92,7 +92,6 @@ void deleteEnd(){
         q = p;
         p = p->next;
     }
-    p = q->next;
     q->next = NULL;
     free(p);
 }
@@ -105,7 +104,7 @@ void deleteRandom(int position){
         return;
     }
 
-    int k;
+    int k=1;
     node *temp,*q,*p;
     p = head;
     while(p!=NULL && k<position)
@@ -114,9 +113,8 @@ void deleteRandom(int position){
         q = p;
         p = p->next;
     }
-    temp = q->next;
-    q->next = NULL;
-    free(temp);
+    q->next = p->next;
+    free(p);
 }
 
 void insertBeg(int data)
@@ -134,12 +132,6 @@ void insertBeg(int data)
     head = p;
 }
 
-<<<<<<< HEAD
-void displayList(node *p){
-    int k = 1;
-    while(p->next!=NULL){
-        printf("Element %d: %d",k,p->data);
-=======
 void displayList(){
     if(head == NULL)
     {
@@ -151,7 +143,6 @@ void displayList(){
     p = head;
     while(p!=NULL){
         printf("Element %d: %d ",k,p->data);
->>>>>>> 759e3c04502614f92bdab31617d013b718a31387
         p = p->next;
         k++;
     }
@@ -244,5 +235,5 @@ void main()
         }
         printf("\nDo You want to continue?(for yes->(1)/for No->(0))::");
         scanf("%d",&ch2);
-    }while(ch2==1||ch2==1);
+    }while(ch2==1);
 }
