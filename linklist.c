@@ -90,9 +90,7 @@ void deleteEnd(){
     while(p->next!=NULL)
     {
         q = p;
-        printf("\n%d",q->data);
         p = p->next;
-        printf("\n%d",p->data);
     }
     p = q->next;
     q->next = NULL;
