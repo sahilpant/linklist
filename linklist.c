@@ -4,12 +4,12 @@ struct listNode
 {
     int data;
     struct listNode *next;
-}*head=NULL;
+}*head;
 
 typedef struct listNode node;
 
 void createList(){
-    node *newNode;
+    node *newNode;int x;
     newNode = (node*)malloc(sizeof(node));
     if(!newNode)
     {
@@ -17,21 +17,22 @@ void createList(){
         return;
     }
     printf("Enter the data::");
-    scanf("%d",newNode->data);
+    scanf("%d",&newNode->data);
     head = newNode;
     newNode->next = NULL;
 }
 
 void insertEnd(int data){
-    node *p,*newNode;
+    node *p,*q,*newNode;
     newNode = (node*)malloc(sizeof(node));
     newNode->data = data;
     p = head;
     while(p!=NULL)
     {
-       p = p->next;
+        q = p;
+        p = p->next;
     }
-    p->next = newNode;
+    q->next = newNode;
     newNode->next = NULL;
 }
 
@@ -45,14 +46,15 @@ void insertRandom(int data, int position){
         return;
     }
     newNode->data = data;
-    q = head;
-    while(q!=NULL && k<position)
+    p = head;
+    while(p!=NULL && k<position)
     {
         k++;
-        q = q->next;
+        q = p;
+        p = p->next;
     }
-    newNode->next = q;
-    q->next = newNode;
+    newNode->next = p->next;
+    p->next = newNode;
 }
 
 void deleteBeg(){
@@ -77,17 +79,15 @@ void deleteEnd(){
         return;
     }
 
-    node *temp,*p,*q;
+    node *p,*q;
     p = head;
     while(p!=NULL)
     {
         q = p;
         p = p->next;
     }
-    temp = q->next;
-    q->next = NULL;
-    free(temp);
-    
+    q->next = p->next;
+    free(p);
 }
 
 void deleteRandom(int position){
@@ -128,11 +128,16 @@ void insertBeg(int data)
 }
 
 void displayList(){
+    if(head == NULL)
+    {
+        printf("LIST EMPTY!!!");
+        return;
+    }
     int k=1;
     node *p;
     p = head;
-    while(p->next!=NULL){
-        printf("Element %d: %d",k,p->data);
+    while(p!=NULL){
+        printf("Element %d: %d ",k,p->data);
         p = p->next;
         k++;
     }
@@ -144,7 +149,6 @@ void Reverse(){
         printf("LIST EMPTY!!!");
         return;
     }
-
     node *p,*q;
     while(p!=NULL) p = p->next;
     q = head;
@@ -154,11 +158,12 @@ void Reverse(){
 
 void main()
 {
-    char ch;int choice,data,position; 
+    char ch1;int ch2;
+    int choice,data,position; 
     printf("Do You want to create a Link List?(Y/N)::");
-    scanf("%c",&ch);
-    (ch=='y'||ch=='Y') ? createList() : exit(0);
-    while(1)
+    scanf("%c",&ch1);
+    (ch1=='y'||ch1=='Y') ? createList() : exit(0);
+    do
     {
         printf("\nchoose from the following options::");
         printf("\n1.Insert at the end::");
@@ -169,6 +174,7 @@ void main()
         printf("\n6.delete at any random position::");
         printf("\n7.Display the list::");
         printf("\n8.Display the list in reverse order::");
+        printf("\nEnter::");
         scanf("%d",&choice);
         switch(choice)
         {
@@ -193,14 +199,14 @@ void main()
 
             case 4:
             
-            printf("\nData has been deleted==>");
+            printf("Data has been deleted==>");
             deleteEnd();
             break;
             
             case 5:
 
-            printf("\nData has been deleted==>");
             deleteBeg();
+            printf("\nData has been deleted==>");
             break;
 
             case 6:
@@ -212,23 +218,17 @@ void main()
             break;
 
             case 7:
-            displayList(head);
+            
+            displayList();
+            
             break;
 
             case 8:
 
-            displayReverse();
+            Reverse();
             break;
         }
-        printf("\nDo You want to contiue?(y/n)");
-        scanf("%c",&ch);
-        if(ch=='y'||ch=='Y')
-        {
-            continue;
-        }
-        else
-        {
-            exit(0);
-        }
-    }
+        printf("\nDo You want to continue?(for yes->(1)/for No->(0))::");
+        scanf("%d",&ch2);
+    }while(ch2==1||ch2==1);
 }
