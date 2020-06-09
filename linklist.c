@@ -47,14 +47,20 @@ void insertRandom(int data, int position){
     }
     newNode->data = data;
     p = head;
+    if(k==1)
+    {
+        head = newNode;
+        newNode->next = p;
+        return;
+    }
     while(p!=NULL && k<position)
     {
         k++;
         q = p;
         p = p->next;
     }
-    newNode->next = p->next;
-    p->next = newNode;
+    q->next = newNode;
+    newNode->next = p;
 }
 
 void deleteBeg(){
