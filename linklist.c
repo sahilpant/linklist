@@ -87,12 +87,15 @@ void deleteEnd(){
 
     node *p,*q;
     p = head;
-    while(p!=NULL)
+    while(p->next!=NULL)
     {
         q = p;
+        printf("\n%d",q->data);
         p = p->next;
+        printf("\n%d",p->data);
     }
-    q->next = p->next;
+    p = q->next;
+    q->next = NULL;
     free(p);
 }
 
