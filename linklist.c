@@ -141,7 +141,8 @@ void displayList(){
     int k=1;
     node *p;
     p = head;
-    while(p!=NULL){
+    while(p!=NULL)
+    {
         printf("Element %d: %d ",k,p->data);
         p = p->next;
         k++;
@@ -154,10 +155,16 @@ void Reverse(){
         printf("LIST EMPTY!!!");
         return;
     }
-    node *p,*q;
-    while(p!=NULL) p = p->next;
-    q = head;
-
+    node *temp = NULL,*nextNode = NULL;
+    while(head)
+    {
+        nextNode = head->next;
+        head->next = temp;
+        temp = head;
+        head = nextNode;
+    }
+    head = temp;
+    printf("===The List has been reversed===");
 }
 
 
@@ -178,7 +185,7 @@ void main()
         printf("\n5.delete at the beginning::");
         printf("\n6.delete at any random position::");
         printf("\n7.Display the list::");
-        printf("\n8.Display the list in reverse order::");
+        printf("\n8.reverse the list::");
         printf("\nEnter::");
         scanf("%d",&choice);
         switch(choice)
@@ -234,7 +241,7 @@ void main()
             
             break;
         }
-        printf("\nDo You want to continue?(for yes->(1)/for No->(0))::");
+        printf("\nDo You want to continue?(for yes->(1)::");
         scanf("%d",&ch2);
     }while(ch2==1);
 }
